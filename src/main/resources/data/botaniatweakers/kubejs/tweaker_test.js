@@ -1,6 +1,6 @@
 // this is an example of what a valid KubeJS tweaker file could look like.
 // change shouldLoad to true to witness it in action.
-var shouldLoad = false
+var shouldLoad = true
 
 if (shouldLoad) {
 settings.logAddedRecipes = true
@@ -37,7 +37,10 @@ events.listen('recipes', event => {
         mana: 500,
         catalyst: 'minecraft:bricks'
     })
-    event.recipes.botania.mana_infusion('coom2', 'minecraft:diamond_block', 'minecraft:brick', 1000, 'minecraft:gold_block')
+    event.recipes.botania.mana_infusion('coom2', 'minecraft:diamond_block', 'minecraft:brick', 1000, 'minecraft:gold_block', 'botania:flower_cycle')
+    event.recipes.botania.mana_infusion('coom3', 'minecraft:diamond_block', 'minecraft:brick', 1000, 'minecraft:gold_block')
+    event.recipes.botania.mana_infusion('minecraft:diamond_block', 'minecraft:brick', 1000, 'minecraft:gold_block')
+    event.recipes.botania.mana_infusion('minecraft:diamond_block', 'minecraft:brick', 1000, null)
 
     event.recipes.botania.petal_apothecary({
         id: 'vroom',

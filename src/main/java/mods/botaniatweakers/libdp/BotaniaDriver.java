@@ -223,15 +223,18 @@ public class BotaniaDriver implements Driver {
     }
 
     public void registerOreWeight(String ore, int weight, boolean isIgnem) {
-        if (!ore.contains(":")) ore = "c:"+ore;
+        if (!ore.contains(":")) ore = "c:" + ore;
         else if (ore.charAt(0) == '#') ore = ore.substring(1);
         Identifier id = TweakerUtil.toId(ore);
         Tag<Block> tag = ServerTagManagerHolder.getTagManager().getBlocks().getTag(id);
-        if (tag == null) { tweaker.getLogger().error("Error adding Orechid Ore Weight for tag '{}': It doesn't exist!", ore); }
-        if (isIgnem) {
-            BotaniaAPI.instance().registerNetherOreWeight(id, weight);
+        if (tag == null) {
+            tweaker.getLogger().error("Error adding Orechid Ore Weight for tag '{}': It doesn't exist!", ore);
         } else {
-            BotaniaAPI.instance().registerOreWeight(id, weight);
+            if (isIgnem) {
+                BotaniaAPI.instance().registerNetherOreWeight(id, weight);
+            } else {
+                BotaniaAPI.instance().registerOreWeight(id, weight);
+            }
         }
     }
 

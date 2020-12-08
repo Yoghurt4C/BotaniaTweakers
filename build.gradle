@@ -58,7 +58,7 @@ dependencies {
 	modCompile "alexiil.mc.lib:libblockattributes-all:0.8.4"
 
 	modImplementation "me.zeroeightsix:fiber:0.23.0-2"
-	include "me.zeroeightsix:fiber:0.23.0-2"
+	//include "me.zeroeightsix:fiber:0.23.0-2"
 
 	// Match version with curios, don't include as curios includes it already
 	modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:2.7.2"

@@ -39,6 +39,6 @@ BT.addTerraPlate("jfmsu", "minecraft:dirt", ["minecraft:diamond", "minecraft:dia
 BT.addTerraPlate("#minecraft:coals", ["#minecraft:leaves", "#minecraft:beds"], 10)
 
 // adds tag 'c:copper_ores` into the Orechid ore weight registry. the '#' is unnecessary here
-BT.addOrechidOre("#c:copper_ores", 9316)
+// BT.addOrechidOre("#c:copper_ores", 9316)
 // adds tag 'c:nether_copper_ores' into the Orechid Ignem ore weight registry. lack of an identifier automatically prepends 'c:' to the id
-BT.addOrechidIgnemOre("nether_copper_ores", 3861)
+// BT.addOrechidIgnemOre("nether_copper_ores", 3861)

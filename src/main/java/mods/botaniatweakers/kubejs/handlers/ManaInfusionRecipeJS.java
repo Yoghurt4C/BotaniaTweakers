@@ -1,6 +1,5 @@
 package mods.botaniatweakers.kubejs.handlers;
 
-import com.google.gson.JsonPrimitive;
 import dev.latvian.kubejs.item.ItemStackJS;
 import dev.latvian.kubejs.item.ingredient.IngredientJS;
 import dev.latvian.kubejs.recipe.RecipeJS;
@@ -27,10 +26,18 @@ public class ManaInfusionRecipeJS extends RecipeJS {
     @Override
     public void create(ListJS args) {
         int i = 0;
-        if (args.size() > 4) {
-            this.id = TweakerUtil.toId(args.get(i));
-            i++;
+
+        if (args.size() > 3) {
+            String hack = TweakerUtil.toString(args.get(3));
+            try {
+                Integer.parseInt(hack);
+                this.id = TweakerUtil.toId(args.get(i));
+                i++;
+            } catch (NumberFormatException e) {
+                //looks like there's no id :)
+            }
         }
+
         ItemStackJS out = TweakerUtil.toItemStackJS(args.get(i));
         this.outputItems.add(out);
         i++;
@@ -41,13 +48,18 @@ public class ManaInfusionRecipeJS extends RecipeJS {
 
         int mana = TweakerUtil.toInt(args.get(i));
         this.mana = MathHelper.clamp(mana, 0, 99999);
-        i++;
 
-        Identifier cat = new Identifier(TweakerUtil.toString(args.get(i)));
-        Optional<Block> block = Registry.BLOCK.getOrEmpty(cat);
-        block.ifPresent(v -> this.catalyst = v.getDefaultState());
+        if (i < args.size() - 1) {
+            i++;
+            String str = TweakerUtil.toString(args.get(i));
+            if (!str.equals("null")) {
+                Identifier cat = new Identifier(str);
+                Optional<Block> block = Registry.BLOCK.getOrEmpty(cat);
+                block.ifPresent(v -> this.catalyst = v.getDefaultState());
+            }
+        }
 
-        if (args.size() > 5) {
+        if (i < args.size() - 1) {
             i++;
             this.group = TweakerUtil.toString(args.get(i));
         }

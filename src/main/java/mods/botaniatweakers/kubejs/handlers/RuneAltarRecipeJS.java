@@ -31,7 +31,7 @@ public class RuneAltarRecipeJS extends RecipeJS {
         this.inputItems.addAll(in);
         i++;
 
-        this.mana = MathHelper.clamp(TweakerUtil.toInt(args.get(i)),0, 100000);
+        this.mana = MathHelper.clamp(TweakerUtil.toInt(args.get(i)), 0, 100000);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class RuneAltarRecipeJS extends RecipeJS {
             this.inputItems.add(IngredientJS.of(in));
         }
 
-        this.mana = MathHelper.clamp(JsonHelper.getInt(json, "mana", 1000), 0,100000);
+        this.mana = MathHelper.clamp(JsonHelper.getInt(json, "mana", 1000), 0, 100000);
     }
 
     @Override
