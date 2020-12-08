@@ -248,7 +248,7 @@ public interface TweakerUtil {
             if (tag == null) {
                 throw new IllegalArgumentException("Tag \"" + s + "\" is empty!");
             }
-            return tag.values().get(9).getDefaultState();
+            return tag.values().get(0).getDefaultState();
         } else {
             Optional<Block> cat = Registry.BLOCK.getOrEmpty(catalystId);
             if (!cat.isPresent()) {

@@ -6,16 +6,12 @@ import dev.latvian.kubejs.recipe.RecipeJS;
 import dev.latvian.kubejs.util.ListJS;
 import mods.botaniatweakers.BotaniaTweakers;
 import mods.botaniatweakers.util.TweakerUtil;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.registry.Registry;
 import vazkii.botania.common.crafting.StateIngredientHelper;
 
 import javax.annotation.Nullable;
-import java.util.Optional;
 
 public class ManaInfusionRecipeJS extends RecipeJS {
     private int mana;
@@ -34,7 +30,7 @@ public class ManaInfusionRecipeJS extends RecipeJS {
                 this.id = TweakerUtil.toId(args.get(i));
                 i++;
             } catch (NumberFormatException e) {
-                //looks like there's no id :)
+                // todo do a somersault
             }
         }
 
@@ -53,9 +49,7 @@ public class ManaInfusionRecipeJS extends RecipeJS {
             i++;
             String str = TweakerUtil.toString(args.get(i));
             if (!str.equals("null")) {
-                Identifier cat = new Identifier(str);
-                Optional<Block> block = Registry.BLOCK.getOrEmpty(cat);
-                block.ifPresent(v -> this.catalyst = v.getDefaultState());
+                this.catalyst = TweakerUtil.toState(str);
             }
         }
 

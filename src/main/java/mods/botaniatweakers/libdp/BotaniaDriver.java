@@ -42,7 +42,7 @@ public class BotaniaDriver implements Driver {
 
     @Override
     public String getApplyMessage() {
-        return "I LIVE";
+        return null;
     }
 
     @Override
