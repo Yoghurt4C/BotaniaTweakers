@@ -10,7 +10,6 @@ import dev.latvian.kubejs.item.ItemStackJS;
 import dev.latvian.kubejs.item.ingredient.IngredientJS;
 import dev.latvian.kubejs.item.ingredient.TagIngredientJS;
 import dev.latvian.kubejs.util.ListJS;
-import io.github.cottonmc.libdp.api.DPSyntaxError;
 import io.github.cottonmc.libdp.api.driver.recipe.RecipeDriver;
 import io.github.cottonmc.libdp.api.driver.recipe.RecipeParser;
 import mods.botaniatweakers.BotaniaTweakers;
@@ -110,7 +109,7 @@ public interface TweakerUtil {
         } else {
             try {
                 return RecipeParser.processIngredient(o);
-            } catch (DPSyntaxError e) {
+            } catch (Exception e) {
                 RecipeDriver.INSTANCE.getLogger().error("Caught error processing ingredient '{}': {}", o, e.getMessage());
             }
         }
@@ -212,7 +211,7 @@ public interface TweakerUtil {
         } else {
             try {
                 return RecipeParser.processItemStack(o);
-            } catch (DPSyntaxError e) {
+            } catch (Exception e) {
                 RecipeDriver.INSTANCE.getLogger().error("Caught error processing ItemStack '{}': {}", o, e.getMessage());
             }
         }
