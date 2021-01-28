@@ -1,5 +1,6 @@
 package mods.botaniatweakers.kubejs.handlers;
 
+import dev.latvian.kubejs.recipe.RecipeExceptionJS;
 import dev.latvian.kubejs.recipe.RecipeJS;
 import dev.latvian.kubejs.util.ListJS;
 import mods.botaniatweakers.BotaniaTweakers;
@@ -41,10 +42,14 @@ public class PureDaisyRecipeJS extends RecipeJS {
     public void deserialize() {
         if (json.get("output").isJsonObject()) {
             this.out = TweakerUtil.toState(json, "output");
+        } else {
+            throw new RecipeExceptionJS("Invalid output format! Expected JsonObject! Offending recipe: " + json.toString());
         }
 
         if (json.get("input").isJsonObject()) {
             this.ing = StateIngredientHelper.deserialize(JsonHelper.getObject(json, "input"));
+        } else {
+            throw new RecipeExceptionJS("Invalid input format! Expected JsonObject! Offending recipe: " + json.toString());
         }
 
         this.time = JsonHelper.getInt(json, "time", this.time);

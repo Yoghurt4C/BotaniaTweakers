@@ -145,13 +145,13 @@ public interface TweakerUtil {
             }
             if (!itemId.isEmpty()) {
                 if (isTag) {
-                    return TagIngredientJS.createTag(itemId).count(stacksize);
+                    return TagIngredientJS.createTag(itemId).withCount(stacksize);
                 } else {
                     Item item = Registry.ITEM.get(new Identifier(itemId));
                     ItemStack stack = new ItemStack(item, stacksize);
                     ItemStackJS sjs = ItemStackJS.of(stack);
                     if (nbt != null) {
-                        sjs.nbt(nbt);
+                        sjs.withNBT(nbt);
                     }
                     return sjs;
                 }

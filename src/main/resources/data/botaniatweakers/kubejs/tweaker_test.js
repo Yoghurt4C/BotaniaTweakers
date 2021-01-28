@@ -1,8 +1,10 @@
 // this is an example of what a valid KubeJS tweaker file could look like.
 // change shouldLoad to true to witness it in action.
-var shouldLoad = false
+let shouldLoad = false
+let floader = utils.getField("net.fabricmc.loader.FabricLoader", 'INSTANCE').staticGet()
+let isDev = floader.get().isDevelopmentEnvironment()
 
-if (shouldLoad) {
+if (shouldLoad || isDev) {
     settings.logAddedRecipes = true
     settings.logRemovedRecipes = true
     settings.logSkippedRecipes = false
@@ -49,8 +51,13 @@ if (shouldLoad) {
 
         event.recipes.botania.pure_daisy({
             id: 'woomy',
-            output: 'minecraft:coarse_dirt',
-            input: 'minecraft:coal_ore',
+            output: {
+                name: 'minecraft:coarse_dirt'
+            },
+            input: {
+                type: 'block',
+                block: 'minecraft:coal_ore'
+            },
             time: 20
         })
         event.recipes.botania.pure_daisy('yoom', 'minecraft:gold_ore', 'minecraft:bricks', 80)
